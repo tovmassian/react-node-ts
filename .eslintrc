@@ -9,16 +9,18 @@
 	},
 	"settings": {
 		"react": {
-			"version": "detect"
+			"version": "latest"
 		}
 	},
 	"extends": [
+		"plugin:react/recommended",
 		"plugin:@typescript-eslint/recommended",
-		"prettier/@typescript-eslint",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
+		"prettier/@typescript-eslint"
 	],
 	"rules": {
 		"semi": ["error", "always"],
-		"quotes": ["error", "single"]
+		"quotes": ["error", "single"],
+		"@typescript-eslint/no-use-before-define": ["error", { "functions": false }]
 	}
 }

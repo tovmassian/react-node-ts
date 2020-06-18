@@ -20,10 +20,11 @@
         ]
     },
     "include": [
-        "./src/**/*.ts"
+        "./src/**/*.{ts,tsx}",
+        "./public/app/**/*.{ts,tsx}"
     ],
     "exclude": [
-        "./src/**/*Spec.ts",
-        "./src/public/"
+        "./src/**/*.test.ts",
+        "./public/app/**/*.test.ts"
     ]
 }
