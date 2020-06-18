@@ -109,3 +109,5 @@ dist
 
 #production
 build
+
+.DS_Store
