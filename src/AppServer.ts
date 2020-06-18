@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import * as controllers from './controllers';
 
 class AppServer extends Server {
-    private readonly SERVER_START_MSG = 'Demo server started on port: ';
+    private readonly SERVER_START_MSG = 'Server started on port: ';
     private readonly DEV_MSG = 'Express Server is running in development mode. No front-end content is being served.';
 
     constructor() {
@@ -13,7 +13,7 @@ class AppServer extends Server {
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.setupControllers();
         // Point to front-end code
-        
+
         if (process.env.NODE_ENV !== 'production') {
             console.info('Starting server in development mode');
             const msg = this.DEV_MSG + process.env.EXPRESS_PORT;
