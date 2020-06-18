@@ -23,7 +23,6 @@
         "./src/**/*.ts"
     ],
     "exclude": [
-        "./src/**/*Spec.ts",
-        "./src/public/"
+        "./src/**/*.test.ts"
     ]
 }

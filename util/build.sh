@@ -7,3 +7,20 @@ rm -rf ./build/
 
 # Transpile .ts to .js
 tsc --sourceMap false
+
+### Bundle FrontEnd ###
+
+# Create the directory for React
+mkdir -p ./build/public/app/
+
+# Navigate to the react directory
+cd ./public/app
+
+# Build React code
+npm run build
+
+# Rename the folder
+mv build app
+
+# Move the contains to the build/ dir
+mv app ../../build/public/
