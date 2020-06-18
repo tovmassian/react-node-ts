@@ -6,11 +6,7 @@
 rm -rf ./build/
 
 # Transpile .ts to .js
-tsc --sourceMap false &&
-
-cd ./build
-
-NODE_ENV=production node start.js
+tsc --sourceMap false
 
 ### Bundle FrontEnd ###
 
@@ -18,7 +14,7 @@ NODE_ENV=production node start.js
 mkdir -p ./build/public/app/
 
 # Navigate to the react directory
-cd ./src/public/app
+cd ./public/app
 
 # Build React code
 npm run build
@@ -27,4 +23,4 @@ npm run build
 mv build app
 
 # Move the contains to the build/ dir
-mv app ../../../../build/public/
+mv app ../../build/public/
