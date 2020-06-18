@@ -4,10 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon --config './util/nodemon.json'",
+        "start": "npm install --only=prod && NODE_ENV=production node ./build/start.js",
+        "start-dev": "nodemon --config './util/nodemon.json'",
         "test": "NODE_ENV=test ts-node ./src/start.ts",
         "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
-        "build": "./build.sh bin/sh"
+        "build": "sh util/build.sh"
     },
     "repository": {
         "type": "git",
