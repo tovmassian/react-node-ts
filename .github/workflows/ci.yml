@@ -1,0 +1,32 @@
+name: Full-stack CI
+on: push
+
+jobs:
+  full-stak-ci:
+    name: Lint & Test & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+
+      - name: Install Server Dependencies
+        run: npm ci
+
+      - name: Run Lint Check on Full Project
+        run: npm run lint
+
+      - name: Run Server Unit Tests Check
+        run: npm test
+
+      - name: Install Client Dependencies
+        run: npm ci --prefix public/app
+
+      - name: Run Client Unit Tests Check
+        run: npm test --prefix public/app
+
+      - name: Build Full Projcet
+        run: npm run build
