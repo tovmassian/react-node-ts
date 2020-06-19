@@ -1,13 +1,3 @@
-#!/bin/bash
-
-### Build BackEnd ###
-
-# Remove existing production folder
-rm -rf ./build/
-
-# Transpile .ts to .js
-tsc --sourceMap false
-
 ### Bundle FrontEnd ###
 
 # Create the directory for React
