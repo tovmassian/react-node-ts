@@ -1,9 +1,9 @@
-name: CI
+name: Full-stack CI
 on: push
 
 jobs:
-  lint:
-    name: Run Linter check
+  full-stak-ci:
+    name: Lint & Test & Build
     runs-on: ubuntu-latest
 
     steps:
@@ -13,56 +13,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
 
-      - name: Install dependencies
+      - name: Install Server Dependencies
         run: npm ci
 
-      - name: Run Lint
+      - name: Run Lint Check on Full Project
         run: npm run lint
 
-  ci-server:
-    name: CI Server
-    runs-on: ubuntu-latest
-    needs: lint
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Uint Tests
+      - name: Run Server Unit Tests Check
         run: npm test
 
-  ci-client:
-    name: CI Client
-    runs-on: ubuntu-latest
-    needs: lint
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-
-      - name: Install dependencies
+      - name: Install Client Dependencies
         run: npm ci --prefix public/app
 
-  build:
-    name: Build Production
-    runs-on: ubuntu-latest
-    needs: [ci-server, ci-client]
+      - name: Run Client Unit Tests Check
+        run: npm test --prefix public/app
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-
-      - name: Build
+      - name: Build Full Projcet
         run: npm run build
