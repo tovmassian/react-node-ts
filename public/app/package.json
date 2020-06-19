@@ -16,9 +16,9 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "build": "react-scripts build",
-    "test": "CI=true react-scripts test --env=jsdom",
+    "test": "SKIP_PREFLIGHT_CHECK=true CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "browserslist": {
