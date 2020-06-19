@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### Build BackEnd ###
+### Build Back-End ###
 
 # Remove existing production folder
 rm -rf ./build/

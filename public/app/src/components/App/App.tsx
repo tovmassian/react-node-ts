@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../logo.svg';
-import './App.css';
+import './App.scss';
 
 export const App: React.FunctionComponent = () => {
     const [data, setData] = useState('Please wait...');

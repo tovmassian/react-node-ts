@@ -1,4 +1,6 @@
-### Bundle FrontEnd ###
+#!/bin/bash
+
+### Bundle Front-End ###
 
 # Create the directory for React
 mkdir -p ./build/public/app/
