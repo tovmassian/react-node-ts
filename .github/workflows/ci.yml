@@ -14,10 +14,11 @@ jobs:
         uses: actions/setup-node@v1
 
       - name: Install dependencies
-          run: npm ci
+        run: npm ci
 
       - name: Run Lint
-          run: npm run lint
+        run: npm run lint
+
   ci-server:
     name: CI Server
     runs-on: ubuntu-latest
@@ -65,6 +66,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-
-
