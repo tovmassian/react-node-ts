@@ -9,7 +9,7 @@ mkdir -p ./build/public/app/
 cd ./public/app
 
 # Install dependencies
-npm install &&
+npm install
 
 # Build React code
 npm run build &&
