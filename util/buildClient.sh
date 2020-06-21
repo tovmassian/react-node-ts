@@ -8,8 +8,11 @@ mkdir -p ./build/public/app/
 # Navigate to the react directory
 cd ./public/app
 
+# Install dependencies
+npm install &&
+
 # Build React code
-npm run build
+npm run build &&
 
 # Rename the folder
 mv build app

@@ -4,7 +4,8 @@ import { Logger } from '@overnightjs/logger';
 // Start the server or run tests
 if (process.env.NODE_ENV !== 'test') {
     const server = new AppServer();
-    server.start(process.env.NODE_ENV === 'development' ? 5000 : 8000);
+    const PORT = process.env.PORT || 8000;
+    server.start(process.env.NODE_ENV === 'production' ? +PORT : 5000);
 } else {
     const Jasmine = require('jasmine');
     const jasmine = new Jasmine();
