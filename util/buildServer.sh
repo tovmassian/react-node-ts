@@ -2,6 +2,9 @@
 
 ### Build Back-End ###
 
+# Install dependencies
+npm ci
+
 # Remove existing production folder
 rm -rf ./build/
 

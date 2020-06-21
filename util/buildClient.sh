@@ -8,6 +8,9 @@ mkdir -p ./build/public/app/
 # Navigate to the react directory
 cd ./public/app
 
+# Install dependencies
+npm ci
+
 # Build React code
 npm run build
 

@@ -13,8 +13,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
 
-      - name: Install Server Dependencies
-        run: npm ci
+      - name: Build Full Projcet for Production
+        run: npm run build
 
       - name: Run Lint Check on Full Project
         run: npm run lint
@@ -22,11 +22,5 @@ jobs:
       - name: Run Server Unit Tests Check
         run: npm test
 
-      - name: Install Client Dependencies
-        run: npm ci --prefix public/app
-
       - name: Run Client Unit Tests Check
         run: npm test --prefix public/app
-
-      - name: Build Full Projcet
-        run: npm run build
