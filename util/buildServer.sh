@@ -6,7 +6,7 @@
 rm -rf ./build/
 
 # Install dependencies
-npm install &&
+npm ci
 
 # Transpile .ts to .js
 tsc --sourceMap false
