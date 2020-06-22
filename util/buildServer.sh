@@ -5,6 +5,9 @@
 # Remove existing production folder
 rm -rf ./build/
 
+# Remove existing production folder
+rm -rf ./node_modules
+
 # Install dependencies
 npm ci
 
