@@ -9,7 +9,7 @@ class TestServer extends Server {
         this.app.use(bodyParser.urlencoded({ extended: true }));
     }
 
-    public setController(controller: object): void {
+    public setController(controller: Record<string, unknown>): void {
         super.addControllers(controller);
     }
 
