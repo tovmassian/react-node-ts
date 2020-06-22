@@ -25,6 +25,8 @@ Make sure you have installed `node: v10.16.0` and `npm: v6.9.0`. Check this [doc
  
 *  Run `npm run start-dev` from your terminal to run both front-end and back-end.
 
+Your app will be running on `http://localhost:3000/` while your express API will be available on `http://localhost:5000/`.
+
 ## Test and check your app code
 
 * Run `npm test` to test your back-end code.
@@ -33,7 +35,7 @@ Make sure you have installed `node: v10.16.0` and `npm: v6.9.0`. Check this [doc
 
 * Run `npm run lint` to check your full-stack code linting.
 
-P.S. For linting rules there are several predefined recommended rules. You can your preferred rules on `.eslintrc`. As there is Prettier installed in the project it will automatically try to fix linting errors if they are configured in `.prettierrc` file.
+P.S. For linting rules there are several predefined recommended rules. You can your preferred rules on `.eslintrc`. As there besides of `ESLint` there is also `Prettier` installed in the project on every linting check it will automatically try to fix linting errors if they are configured in `.prettierrc` file.
 
 ## Build for production
 
@@ -41,6 +43,7 @@ As the whole project is setup with typescript you need to transpile and build ja
 
 * Run `npm ci` to install your main(back-end) dependencies.
 * Run `npm run build` to build your production code in `/build` directory.
+* Run `npm start` to run your application on production.
 
 ## CI 
 
