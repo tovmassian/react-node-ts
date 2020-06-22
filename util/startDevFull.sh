@@ -6,4 +6,4 @@ nodemon --config './util/nodemon.json' &
 
 ### Run Front-End ###
 
-npm run start --prefix public/app
+npm start --prefix public/app

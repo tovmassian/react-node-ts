@@ -9,10 +9,10 @@ mkdir -p ./build/public/app/
 cd ./public/app
 
 # Install dependencies
-npm install &&
+npm ci
 
 # Build React code
-npm run build &&
+npm run build
 
 # Rename the folder
 mv build app
