@@ -9,7 +9,6 @@ class TestServer extends Server {
         this.app.use(bodyParser.urlencoded({ extended: true }));
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
     public setController(controller: object): void {
         super.addControllers(controller);
     }

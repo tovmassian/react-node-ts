@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "install-dev": "sh util/installDevFull.sh",
         "start": "NODE_ENV=production node ./build/start.js",
         "start-dev": "sh util/startDevFull.sh",
         "test": "NODE_ENV=test ts-node ./src/start.ts",
