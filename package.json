@@ -4,11 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "install-dev": "sh util/installDevFull.sh",
-        "start-dev": "sh util/startDevFull.sh",
+        "start-dev": "nodemon --config './util/nodemon.json'",
         "test": "NODE_ENV=test ts-node ./src/start.ts",
-        "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
-        "build": "sh util/buildServer.sh && util/buildClient.sh",
+        "lint": "eslint '*/**/*.ts' --quiet --fix",
+        "build": "sh util/buildServer.sh",
         "start": "NODE_ENV=production node ./build/start.js"
     },
     "engines": {
@@ -34,7 +33,6 @@
         "eslint": "^7.2.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.3",
-        "eslint-plugin-react": "^7.19.0",
         "jasmine": "^3.5.0",
         "nodemon": "^2.0.3",
         "prettier": "^2.0.5",
