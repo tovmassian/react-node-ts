@@ -18,6 +18,11 @@ jobs:
 
       - name: Build Full Projcet for Production
         run: npm run build
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
+          GOOGLE_CALLBACK_URL: ${{ secrets.GOOGLE_CALLBACK_URL }}
 
       - name: Run Lint Check on Full Project
         run: npm run lint

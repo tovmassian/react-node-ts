@@ -4,6 +4,8 @@ import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as controllers from './controllers';
+import connectDB from './config/database';
+import './config/dotEnv';
 
 class AppServer extends Server {
     private readonly SERVER_START_MSG = 'Server started on port: ';
@@ -11,6 +13,9 @@ class AppServer extends Server {
 
     constructor() {
         super(true);
+        // Connect to MongoDB
+        connectDB();
+
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.setupControllers();
