@@ -5,10 +5,10 @@ import * as express from 'express';
 import * as passport from 'passport';
 import * as path from 'path';
 import * as controllers from './controllers';
-import './config/dotEnv';
 import './config/passport';
 import connectDB from './config/database';
 import cookieSession = require('cookie-session');
+import config from './config/config';
 
 class AppServer extends Server {
     private readonly SERVER_START_MSG = 'Server started on port: ';
@@ -65,7 +65,7 @@ class AppServer extends Server {
     }
 
     private authorize(): void {
-        this.app.use(cookieSession({ maxAge: 30 * 24 * 60 * 60 * 1000, keys: [process.env.COOKIE_SESSION_KEY || ''] }));
+        this.app.use(cookieSession({ maxAge: 30 * 24 * 60 * 60 * 1000, keys: [config.cookieSessionKey || ''] }));
         this.app.use(passport.initialize());
         this.app.use(passport.session());
     }

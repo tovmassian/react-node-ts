@@ -1,15 +1,16 @@
 import { ConnectionOptions, connect } from 'mongoose';
+import config from './config';
 
 const connectDB = async () => {
     try {
-        const mongoURI: string = process.env.MONGO_URI || '';
+        const { mongoUri } = config;
         const options: ConnectionOptions = {
             useNewUrlParser: true,
             useCreateIndex: true,
             useFindAndModify: false,
             useUnifiedTopology: true,
         };
-        await connect(mongoURI, options);
+        await connect(mongoUri as string, options);
         console.log('MongoDB Connected...');
     } catch (err) {
         console.error(err.message);

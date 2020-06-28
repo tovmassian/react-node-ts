@@ -1,8 +1,9 @@
 import * as passport from 'passport';
 import { Profile, Strategy as GoogleStrategy, VerifyCallback } from 'passport-google-oauth20';
 import User, { IUser } from '../models/User';
+import config from './config';
 
-const { GOOGLE_CLIENT_ID, GOOGLE_SECRET, GOOGLE_CALLBACK_URL } = process.env;
+const { googleClientId, googleSecret } = config;
 
 passport.serializeUser((user: IUser, done) => {
     done('', user.id);
@@ -16,9 +17,9 @@ passport.deserializeUser(async (id: number, done: VerifyCallback) => {
 passport.use(
     new GoogleStrategy(
         {
-            clientID: GOOGLE_CLIENT_ID || 'googleClientId',
-            clientSecret: GOOGLE_SECRET || 'googleSecret',
-            callbackURL: GOOGLE_CALLBACK_URL || 'googleCallBackURL',
+            clientID: googleClientId || 'clientId',
+            clientSecret: googleSecret || 'clientSecret',
+            callbackURL: '/auth/google/callback',
         },
         async (accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback) => {
             if (profile._json.hd === 'picsart.com') {

@@ -68,11 +68,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-src/config/.env
-.env.test
-.env
-
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
@@ -114,5 +109,5 @@ build
 .DS_Store
 public/.DS_Store
 
-#auth config
-src/config/google.json
+#development config
+src/config/dev.config.ts
