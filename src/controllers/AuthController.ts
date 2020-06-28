@@ -2,12 +2,11 @@ import { OK, BAD_REQUEST } from 'http-status-codes';
 import { Controller, Get, Middleware } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import { Request, Response } from 'express';
-import '../config/passport';
 import { authGoogle, authGoogleWithParams } from '../middlewares/authGoogle';
 
-@Controller('auth/google')
+@Controller('auth')
 export class AuthController {
-    @Get('')
+    @Get('google')
     @Middleware(authGoogleWithParams)
     private loginWithGoogle(req: Request, res: Response) {
         try {
@@ -22,13 +21,24 @@ export class AuthController {
         }
     }
 
-    @Get('callback')
+    @Get('google/callback')
     @Middleware(authGoogle)
     private googleAuthCallback(req: Request, res: Response) {
         try {
-            return res.status(OK).json({
-                message: 'logged in',
+            return res.status(OK).json(req.session);
+        } catch (err) {
+            Logger.Err(err, true);
+            return res.status(BAD_REQUEST).json({
+                error: err.message,
             });
+        }
+    }
+
+    @Get('logout')
+    private logout(req: Request, res: Response) {
+        try {
+            req.logOut();
+            res.send(JSON.stringify(req.user));
         } catch (err) {
             Logger.Err(err, true);
             return res.status(BAD_REQUEST).json({
