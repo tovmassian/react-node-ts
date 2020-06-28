@@ -65,6 +65,7 @@ class AppServer extends Server {
     }
 
     private authorize(): void {
+        console.log(`---cookieSessionKey---${config.cookieSessionKey}---`);
         this.app.use(cookieSession({ maxAge: 30 * 24 * 60 * 60 * 1000, keys: [config.cookieSessionKey || ''] }));
         this.app.use(passport.initialize());
         this.app.use(passport.session());

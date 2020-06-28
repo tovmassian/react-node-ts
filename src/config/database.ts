@@ -10,6 +10,7 @@ const connectDB = async () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
         };
+        console.log(`---mongoUri---${mongoUri}---`);
         await connect(mongoUri as string, options);
         console.log('MongoDB Connected...');
     } catch (err) {

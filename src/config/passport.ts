@@ -4,6 +4,7 @@ import User, { IUser } from '../models/User';
 import config from './config';
 
 const { googleClientId, googleSecret } = config;
+console.log(`---googleClientId---${googleClientId}---googleSecret-------${googleSecret}`);
 
 passport.serializeUser((user: IUser, done) => {
     done('', user.id);
