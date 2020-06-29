@@ -2,7 +2,7 @@ import { OK, BAD_REQUEST } from 'http-status-codes';
 import { Controller, Get, Middleware } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import { Request, Response } from 'express';
-import { authGoogleMiddleware, authGoogleWithParamsMiddleware } from '../middlewares/authMiddleWare';
+import { authGoogleMiddleware, authGoogleWithParamsMiddleware } from '../middlewares/authMiddleware';
 
 @Controller('auth')
 export class AuthController {
