@@ -1,9 +1,15 @@
 import { Server } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
-import * as path from 'path';
-import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import * as passport from 'passport';
+import * as path from 'path';
 import * as controllers from './controllers';
+import './config/passport';
+import connectDB from './config/database';
+import cookieSession = require('cookie-session');
+import config from './config/config';
+import { Environment } from './enums';
 
 class AppServer extends Server {
     private readonly SERVER_START_MSG = 'Server started on port: ';
@@ -11,13 +17,19 @@ class AppServer extends Server {
 
     constructor() {
         super(true);
+        // Connect to MongoDB
+        connectDB();
+
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
-        this.setupControllers();
-        // Point to front-end code
 
-        if (process.env.NODE_ENV !== 'production') {
-            console.info('Starting server in development mode');
+        this.authorize();
+
+        this.setupControllers();
+
+        // Point to front-end code
+        if (process.env.NODE_ENV === Environment.DEVELOPMENT) {
+            Logger.Info('Starting server in development mode');
             const msg = this.DEV_MSG + process.env.EXPRESS_PORT;
             this.app.get('*', (req, res) => res.send(msg));
         } else {
@@ -51,6 +63,12 @@ class AppServer extends Server {
         this.app.listen(port, () => {
             Logger.Imp(this.SERVER_START_MSG + port);
         });
+    }
+
+    private authorize(): void {
+        this.app.use(cookieSession({ maxAge: 30 * 24 * 60 * 60 * 1000, keys: [config.cookieSessionKey || ''] }));
+        this.app.use(passport.initialize());
+        this.app.use(passport.session());
     }
 }
 

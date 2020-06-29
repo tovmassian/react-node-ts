@@ -1,11 +1,12 @@
 import AppServer from './AppServer';
 import { Logger } from '@overnightjs/logger';
+import { Environment } from './enums';
 
 // Start the server or run tests
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== Environment.TEST) {
     const server = new AppServer();
     const PORT = process.env.PORT || 8000;
-    server.start(process.env.NODE_ENV === 'production' ? +PORT : 5000);
+    server.start(process.env.NODE_ENV === Environment.PRODUCTION ? +PORT : 5000);
 } else {
     const Jasmine = require('jasmine');
     const jasmine = new Jasmine();

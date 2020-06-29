@@ -10,6 +10,7 @@
         "experimentalDecorators": true,
         "target": "es6",
         "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
         "moduleResolution": "node",
         "importHelpers": true,
         "types": [

@@ -1,2 +1,8 @@
+# Back-end
 /src/start.ts
+/src/config/config.ts
 /test/TestServer.ts
+
+# Front-end
+/public/app/src/serviceWorker.ts
+/public/app/src/setupProxy.js
