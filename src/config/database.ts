@@ -1,3 +1,4 @@
+import { Logger } from '@overnightjs/logger';
 import { ConnectionOptions, connect } from 'mongoose';
 import config from './config';
 
@@ -10,11 +11,11 @@ const connectDB = async () => {
             useFindAndModify: false,
             useUnifiedTopology: true,
         };
-        console.log(`---mongoUri---${mongoUri}---`);
         await connect(mongoUri as string, options);
-        console.log('MongoDB Connected...');
+        Logger.Info('MongoDB Connected...');
     } catch (err) {
-        console.error(err.message);
+        Logger.Err('Unable to connect to MongoDB');
+        Logger.Err(err.message);
         // Exit process with failure
         process.exit(1);
     }

@@ -1,10 +1,10 @@
 import * as passport from 'passport';
+import { Logger } from '@overnightjs/logger';
 import { Profile, Strategy as GoogleStrategy, VerifyCallback } from 'passport-google-oauth20';
 import User, { IUser } from '../models/User';
 import config from './config';
 
 const { googleClientId, googleSecret } = config;
-console.log(`---googleClientId---${googleClientId}---googleSecret-------${googleSecret}`);
 
 passport.serializeUser((user: IUser, done) => {
     done('', user.id);
@@ -28,14 +28,14 @@ passport.use(
                     // creating Model Instance and save to DB
                     let user: IUser | null = await User.findOne({ googleId: profile.id });
                     if (user) {
-                        console.log('User exists');
+                        Logger.Info('User exists');
                     } else {
-                        console.log('Creating new user');
+                        Logger.Info('Creating new user');
                         user = await new User({ googleId: profile.id }).save();
                     }
                     done('', user);
                 } catch (e) {
-                    console.log(e.message);
+                    Logger.Err(e.message);
                 }
             } else {
                 throw Error('Please use your PicsArt account for authorization');

@@ -28,7 +28,7 @@ class AppServer extends Server {
 
         // Point to front-end code
         if (process.env.NODE_ENV !== 'production') {
-            console.info('Starting server in development mode');
+            Logger.Info('Starting server in development mode');
             const msg = this.DEV_MSG + process.env.EXPRESS_PORT;
             this.app.get('*', (req, res) => res.send(msg));
         } else {
@@ -65,7 +65,6 @@ class AppServer extends Server {
     }
 
     private authorize(): void {
-        console.log(`---cookieSessionKey---${config.cookieSessionKey}---`);
         this.app.use(cookieSession({ maxAge: 30 * 24 * 60 * 60 * 1000, keys: [config.cookieSessionKey || ''] }));
         this.app.use(passport.initialize());
         this.app.use(passport.session());
