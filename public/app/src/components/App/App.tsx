@@ -26,6 +26,7 @@ export const App: React.FunctionComponent = () => {
                 <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
                     {data}
                 </a>
+                <a href="/auth/google">Sign in with Google</a>
             </header>
         </div>
     );

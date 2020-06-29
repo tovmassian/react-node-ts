@@ -25,7 +25,7 @@ export class AuthController {
     @Middleware(authGoogleMiddleware)
     private googleAuthCallback(req: Request, res: Response) {
         try {
-            return res.status(OK).json(req.session);
+            return res.status(OK).redirect('/');
         } catch (err) {
             Logger.Err(err, true);
             return res.status(BAD_REQUEST).json({

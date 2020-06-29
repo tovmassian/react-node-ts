@@ -5,3 +5,4 @@
 
 # Front-end
 /public/app/src/serviceWorker.ts
+/public/app/src/setupProxy.js
