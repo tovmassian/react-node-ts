@@ -7,8 +7,8 @@ export interface IConfig {
     cookieSessionKey: string | undefined;
 }
 
-const config: IConfig = process.env.NODE_ENV === Environment.PRODUCTION ?
-    require('./prod.config').config :
-    require('./dev.config').config;
+const config: IConfig = process.env.NODE_ENV === Environment.DEVELOPMENT ?
+    require('./dev.config').config :
+    require('./prod.config').config;
 
 export default config as IConfig;
