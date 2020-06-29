@@ -2,12 +2,12 @@ import { OK, BAD_REQUEST } from 'http-status-codes';
 import { Controller, Get, Middleware } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import { Request, Response } from 'express';
-import { authGoogle, authGoogleWithParams } from '../middlewares/authGoogle';
+import { authGoogleMiddleware, authGoogleWithParamsMiddleware } from '../middlewares/authMiddleWare';
 
 @Controller('auth')
 export class AuthController {
     @Get('google')
-    @Middleware(authGoogleWithParams)
+    @Middleware(authGoogleWithParamsMiddleware)
     private loginWithGoogle(req: Request, res: Response) {
         try {
             return res.status(OK).json({
@@ -22,7 +22,7 @@ export class AuthController {
     }
 
     @Get('google/callback')
-    @Middleware(authGoogle)
+    @Middleware(authGoogleMiddleware)
     private googleAuthCallback(req: Request, res: Response) {
         try {
             return res.status(OK).json(req.session);

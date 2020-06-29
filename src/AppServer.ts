@@ -9,6 +9,7 @@ import './config/passport';
 import connectDB from './config/database';
 import cookieSession = require('cookie-session');
 import config from './config/config';
+import { Environment } from './enums';
 
 class AppServer extends Server {
     private readonly SERVER_START_MSG = 'Server started on port: ';
@@ -27,7 +28,7 @@ class AppServer extends Server {
         this.setupControllers();
 
         // Point to front-end code
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV === Environment.DEVELOPMENT) {
             Logger.Info('Starting server in development mode');
             const msg = this.DEV_MSG + process.env.EXPRESS_PORT;
             this.app.get('*', (req, res) => res.send(msg));
