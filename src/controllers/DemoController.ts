@@ -3,11 +3,11 @@ import { Controller, Get } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import { Request, Response } from 'express';
 
-@Controller('api/greet')
+@Controller('api')
 export class DemoController {
     public static readonly SUCCESS_MSG = 'GreetingZ ';
 
-    @Get(':name')
+    @Get('greet/:name')
     private sayHello(req: Request, res: Response) {
         try {
             const { name } = req.params;
@@ -18,6 +18,20 @@ export class DemoController {
             return res.status(OK).json({
                 message: DemoController.SUCCESS_MSG + name,
             });
+        } catch (err) {
+            Logger.Err(err, true);
+            return res.status(BAD_REQUEST).json({
+                error: err.message,
+            });
+        }
+    }
+
+    @Get('user')
+    private currentUser(req: Request, res: Response) {
+        try {
+            if (req.user) {
+                res.send(JSON.stringify(req.user));
+            }
         } catch (err) {
             Logger.Err(err, true);
             return res.status(BAD_REQUEST).json({

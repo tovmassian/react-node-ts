@@ -25,7 +25,7 @@ export class AuthController {
     @Middleware(authGoogleMiddleware)
     private googleAuthCallback(req: Request, res: Response) {
         try {
-            return res.status(OK).redirect('/');
+            return res.status(OK).redirect('/surveys');
         } catch (err) {
             Logger.Err(err, true);
             return res.status(BAD_REQUEST).json({
@@ -38,7 +38,7 @@ export class AuthController {
     private logout(req: Request, res: Response) {
         try {
             req.logOut();
-            res.send(JSON.stringify(req.user));
+            res.status(OK).redirect('/');
         } catch (err) {
             Logger.Err(err, true);
             return res.status(BAD_REQUEST).json({
