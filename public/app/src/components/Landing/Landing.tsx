@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import logo from '../../logo.svg';
 import './Landing.scss';
+import { useSelector } from 'react-redux';
 
 export const Landing: React.FunctionComponent = () => {
-    const [data, setData] = useState('Please wait...');
+    const [data] = useState('Please wait...');
 
-    async function callExpress(): Promise<void> {
-        try {
-            const response = await fetch('api/greet/rudo').then((res) => res.json());
-            setData(response.message);
-        } catch (err) {
-            setData(err.message);
-        }
-    }
-
-    callExpress();
+    const user = useSelector((state: any) => state.auth);
 
     return (
         <>
@@ -27,7 +19,11 @@ export const Landing: React.FunctionComponent = () => {
                     <a className="Landing-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
                         {data}
                     </a>
-                    <a href="/auth/google">Sign in with Google</a>
+                    {user.role === 'user' ? (
+                        <a href="/auth/google">Sign in with Google</a>
+                    ) : (
+                        <a href="/auth/google">Sign in with PicsArt</a>
+                    )}
                 </header>
             </div>
         </>

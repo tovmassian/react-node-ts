@@ -5,6 +5,7 @@ import { fetchUser } from '../../actions';
 import './App.scss';
 import Header from '../Header/Header';
 import Landing from '../Landing/Landing';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 const Dashboard: React.FunctionComponent = () => <h2>Dashboard</h2>;
 const SurveyNew: React.FunctionComponent = () => <h2>SurveyNew</h2>;
@@ -22,8 +23,8 @@ export const App: any = ({ fetchUser }: AppProps) => {
                 <Header />
                 <div className="container">
                     <Route exact={true} path="/" component={Landing} />
-                    <Route exact={true} path="/surveys" component={Dashboard} />
-                    <Route path="/surveys/new" component={SurveyNew} />
+                    <ProtectedRoute exact={true} roles={['admin', 'user']} path="/surveys" component={Dashboard} />
+                    <ProtectedRoute path="/surveys/new" roles={['admin']} component={SurveyNew} />
                 </div>
             </BrowserRouter>
         </>

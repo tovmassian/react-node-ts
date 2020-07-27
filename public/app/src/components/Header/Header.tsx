@@ -4,16 +4,17 @@ import { useSelector } from 'react-redux';
 import './Header.scss';
 
 export const Header: React.FunctionComponent = () => {
-    const isLoggedIn = useSelector((state: any) => state.auth.loggedIn);
+    const userInfo = useSelector((state: any) => state.auth);
+
     return (
         <>
             <nav>
                 <div className="nav-wrapper container">
-                    <Link to={isLoggedIn ? '/surveys' : '/'} className="brand-logo">
+                    <Link to={userInfo.loggedIn ? '/surveys' : '/'} className="brand-logo">
                         React-Node-TS Surveys
                     </Link>
                     <ul className="right hide-on-med-and-down">
-                        {isLoggedIn ? (
+                        {userInfo.loggedIn ? (
                             [
                                 <li key={1}>
                                     <Link to="/surveys">Dashboard</Link>
