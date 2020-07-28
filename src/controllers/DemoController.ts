@@ -1,13 +1,19 @@
 import { OK, BAD_REQUEST } from 'http-status-codes';
-import { Controller, Get } from '@overnightjs/core';
+import { ClassMiddleware, Controller, Get } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
 import { Request, Response } from 'express';
+import { authZOPAPermission } from '../middlewares/authMiddleware';
 
 export interface IUser extends Express.User {
     googleId?: string;
 }
 
+export interface CustomRequest extends Request {
+    isAllowed: boolean;
+}
+
 @Controller('api')
+@ClassMiddleware(authZOPAPermission)
 export class DemoController {
     public static readonly SUCCESS_MSG = 'GreetingZ ';
 
@@ -31,9 +37,9 @@ export class DemoController {
     }
 
     @Get('user')
-    private currentUser(req: Request, res: Response) {
+    private currentUser(req: CustomRequest, res: Response) {
         try {
-            if (req.user) {
+            if (req.user && req.isAllowed) {
                 const user: IUser = req.user;
                 res.send({
                     role: 'admin',

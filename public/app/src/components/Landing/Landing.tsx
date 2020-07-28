@@ -19,6 +19,9 @@ export const Landing: React.FunctionComponent = () => {
                     <a className="Landing-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
                         {data}
                     </a>
+                    <a className="Landing-link" href="/api/greet/khach" rel="noopener noreferrer">
+                        Send Greetings!
+                    </a>
                     {user.role === 'user' ? (
                         <a href="/auth/google">Sign in with Google</a>
                     ) : (
