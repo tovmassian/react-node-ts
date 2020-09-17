@@ -13,7 +13,7 @@ export const Dashboard: React.FunctionComponent = () => {
                         <div className="imageBox" key={index}>
                             <LazyLoadImage
                                 height={150}
-                                src={imageUrl} // use normal <img> attributes as props
+                                src={`${imageUrl}?r240x240`} // use normal <img> attributes as props
                                 width={150}
                             />
                         </div>
