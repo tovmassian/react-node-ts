@@ -26,6 +26,10 @@ roles = [
       {
         "resource": "/greet/khach",
         "action": "read"
+      },
+      {
+        "resource": "/images",
+        "action": "read"
       }
     ]
   },

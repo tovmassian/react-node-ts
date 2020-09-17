@@ -1,0 +1,17 @@
+.Dashboard {
+  text-align: center;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.imageBox {
+  margin: 5px;
+  width: 150px;
+  height: 150px;
+  img {
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+  }
+}

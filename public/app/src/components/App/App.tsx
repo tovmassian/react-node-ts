@@ -5,9 +5,9 @@ import { fetchUser } from '../../actions';
 import './App.scss';
 import Header from '../Header/Header';
 import Landing from '../Landing/Landing';
+import Dashboard from '../Dashboard/Dashboard';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-const Dashboard: React.FunctionComponent = () => <h2>Dashboard</h2>;
 const SurveyNew: React.FunctionComponent = () => <h2>SurveyNew</h2>;
 
 interface AppProps {
