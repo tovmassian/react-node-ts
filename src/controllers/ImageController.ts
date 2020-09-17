@@ -232,7 +232,6 @@ const images = [
     'https://cdn140.picsart.com/334910249045201.png',
     'https://cdn140.picsart.com/333660493009201.jpg',
     'https://cdn140.picsart.com/315065193100211.png',
-    'https://cdn140.picsart.com/320178989241203.jpg',
     'https://cdn140.picsart.com/338028315038201.jpg',
     'https://cdn140.picsart.com/283151901007211.png',
     'https://cdn140.picsart.com/271546944023211.png',
