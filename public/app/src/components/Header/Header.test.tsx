@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import Header from './Header';
 
 xtest('renders learn react link', () => {
-    const { getByText } = render(<App />);
-    const linkElement = getByText(/save to reload/i);
+    const { getByText } = render(<Header />);
+    const linkElement = getByText(/React-Node-TS Surveys/i);
     expect(linkElement).toBeInTheDocument();
 });

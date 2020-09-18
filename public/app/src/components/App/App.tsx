@@ -1,35 +1,36 @@
-import React, { useState } from 'react';
-import logo from '../../logo.svg';
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchUser } from '../../actions';
 import './App.scss';
+import Header from '../Header/Header';
+import Landing from '../Landing/Landing';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-export const App: React.FunctionComponent = () => {
-    const [data, setData] = useState('Please wait...');
+const Dashboard: React.FunctionComponent = () => <h2>Dashboard</h2>;
+const SurveyNew: React.FunctionComponent = () => <h2>SurveyNew</h2>;
 
-    async function callExpress(): Promise<void> {
-        try {
-            const response = await fetch('api/greet/rudo').then((res) => res.json());
-            setData(response.message);
-        } catch (err) {
-            setData(err.message);
-        }
-    }
+interface AppProps {
+    children: React.ReactNode;
+    fetchUser: any;
+}
 
-    callExpress();
-
+export const App: any = ({ fetchUser }: AppProps) => {
+    fetchUser();
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    {data}
-                </a>
-                <a href="/auth/google">Sign in with Google</a>
-            </header>
-        </div>
+        <>
+            <BrowserRouter>
+                <Header />
+                <div className="container">
+                    <Route exact={true} path="/" component={Landing} />
+                    <ProtectedRoute exact={true} roles={['admin', 'user']} path="/surveys" component={Dashboard} />
+                    <ProtectedRoute path="/surveys/new" roles={['admin']} component={SurveyNew} />
+                </div>
+            </BrowserRouter>
+        </>
     );
 };
 
-export default App;
+const mapDispatchToProps = { fetchUser };
+
+export default connect(null, mapDispatchToProps)(App);

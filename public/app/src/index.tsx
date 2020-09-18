@@ -4,9 +4,22 @@ import './index.scss';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 
+// state management
+import { createStore, applyMiddleware, Store } from 'redux';
+import { Provider } from 'react-redux';
+import reduxThunk from 'redux-thunk';
+import reducers from './reducers';
+
+// import static css file
+import 'materialize-css/dist/css/materialize.min.css';
+
+const store: Store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
 );
