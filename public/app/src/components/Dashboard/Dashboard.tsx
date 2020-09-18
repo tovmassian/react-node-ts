@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazy-load';
 import './Dashboard.scss';
 
 export const Dashboard: React.FunctionComponent = () => {
-    const [data, setData] = useState('');
+    const [images, setImages] = useState([]);
     useEffect(() => {
         async function getImages(): Promise<void> {
             try {
@@ -12,22 +12,22 @@ export const Dashboard: React.FunctionComponent = () => {
                     return (
                         <div className="imageBox" key={index}>
                             <LazyLoad height={150}>
-                                <img src={`${imageUrl}?r240x240`} />
+                                <img src={`${imageUrl}?to=crop&r=200&type=webp`} />
                             </LazyLoad>
                         </div>
                     );
                 });
-                setData(items);
+                setImages(items);
             } catch (err) {
-                setData(err.message);
+                setImages(err.message);
             }
         }
         getImages();
-    });
+    }, []);
 
     return (
         <>
-            <div className="Dashboard">{data}</div>
+            <div className="Dashboard">{images}</div>
         </>
     );
 };
