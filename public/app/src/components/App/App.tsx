@@ -5,10 +5,8 @@ import { fetchUser } from '../../actions';
 import './App.scss';
 import Header from '../Header/Header';
 import Landing from '../Landing/Landing';
-import Dashboard from '../Dashboard/Dashboard';
+import ImagesGrid from '../ImagesGrid/ImagesGrid';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
-const SurveyNew: React.FunctionComponent = () => <h2>SurveyNew</h2>;
 
 interface AppProps {
     children: React.ReactNode;
@@ -23,8 +21,7 @@ export const App: any = ({ fetchUser }: AppProps) => {
                 <Header />
                 <div className="container">
                     <Route exact={true} path="/" component={Landing} />
-                    <ProtectedRoute exact={true} roles={['admin', 'user']} path="/surveys" component={Dashboard} />
-                    <ProtectedRoute path="/surveys/new" roles={['admin']} component={SurveyNew} />
+                    <ProtectedRoute exact={true} roles={['admin', 'user']} path="/images" component={ImagesGrid} />
                 </div>
             </BrowserRouter>
         </>

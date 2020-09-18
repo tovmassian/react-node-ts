@@ -10,17 +10,14 @@ export const Header: React.FunctionComponent = () => {
         <>
             <nav>
                 <div className="nav-wrapper container">
-                    <Link to={userInfo.loggedIn ? '/surveys' : '/'} className="brand-logo">
+                    <Link to={userInfo.loggedIn ? '/images' : '/'} className="brand-logo">
                         React-Node-TS Surveys
                     </Link>
                     <ul className="right hide-on-med-and-down">
                         {userInfo.loggedIn ? (
                             [
                                 <li key={1}>
-                                    <Link to="/surveys">Dashboard</Link>
-                                </li>,
-                                <li key={2}>
-                                    <Link to="/surveys/new">Create New Survey</Link>
+                                    <Link to="/images">Images</Link>
                                 </li>,
                                 <li key={3}>
                                     <a href="/auth/logout">Logout</a>
